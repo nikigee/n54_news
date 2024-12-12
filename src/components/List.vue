@@ -5,7 +5,7 @@
         <div v-for="item in reversedData" :key="item.id" class="py-2">
             <div class="row justify-content-md-start align-items-top mb-4">
                 <div class="col-md-5 mb-3 mb-md-0">
-                    <img class="img-fluid" :src="item.img_url" alt="Article Image" />
+                    <img class="img-fluid" :src="getURL(item.img_url)" alt="Article Image" />
                 </div>
                 <div class="col text-start">
                     <div class="row">
@@ -25,6 +25,14 @@
         </div>
     </div>
 </template>
+
+<script setup>
+
+function getURL(url) {
+    return url;
+}
+
+</script>
 
 <script>
 export default {

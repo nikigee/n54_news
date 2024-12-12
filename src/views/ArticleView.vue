@@ -2,8 +2,9 @@
     <div class="container text-start" v-if="story">
         <div class="row justify-content-start mb-5">
             <div class="col">
-                <div class="mb-2"><router-link to="../" class="link-primary"><i class="bi bi-arrow-left"></i> Back</router-link></div>
-                <img class="img-fluid mb-3" :src="story.img_url" alt="Article Image" />
+                <div class="mb-2"><router-link to="../" class="link-primary"><i class="bi bi-arrow-left"></i>
+                        Back</router-link></div>
+                <img class="img-fluid mb-3" :src="getURL(story.img_url)" alt="Article Image" />
                 <div class="my-1">
                     <span class="border px-2 py-1 d-inline-block text-muted border-muted" style="font-size: 0.8rem">
                         {{ story.brand }}
@@ -24,6 +25,14 @@
         Sorry, that article does not exist on our records.
     </div>
 </template>
+
+<script setup>
+
+function getURL(url) {
+    return url;
+}
+
+</script>
 
 <script>
 import { useRoute } from "vue-router";
