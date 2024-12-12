@@ -47,7 +47,7 @@ export default {
     },
     computed: {
         articles() {
-            return articleData.articles;
+            return articleData.articles.concat(articleData.new_articles); // combine all
         },
     },
     methods: {
@@ -59,6 +59,9 @@ export default {
     mounted() {
         const route = useRoute();
         const articleId = route.params.articleId;
+
+        
+
         this.story = this.articles.find((v) => v.id === articleId);
     },
 };
