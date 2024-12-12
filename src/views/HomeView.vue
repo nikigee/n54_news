@@ -4,7 +4,7 @@
       <video class="hero-video" autoplay loop muted playsinline src="/cyberpunk_city.mp4"></video>
       <div class="overlay"></div>
       <div class="container py-5">
-        <h1 class="col-lg-8 mb-3">
+        <h1 class="col-lg-8 mb-3 text-uppercase">
           Welcome to Network 54.
         </h1>
         <p class="lead col-lg-8">

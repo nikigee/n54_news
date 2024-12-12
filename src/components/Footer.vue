@@ -1,9 +1,10 @@
 <template>
     <div class="container">
-        <footer class="pt-4 pb-2 mt-2 border-top">
-            <p class="text-body-secondary">
+        <footer class="py-4 border-top d-flex align-items-center justify-content-between flex-wrap">
+            <span class="text-body-secondary my-1 d-inline-block">
                 Copyright © 2083 Network 54, Inc
-            </p>
+            </span>
+            <img class="img-fluid logo" src="/netwatch_logo.png" />
         </footer>
     </div>
 </template>
@@ -15,5 +16,7 @@ export default {
 </script>
 
 <style scoped>
-/* Add any component-specific styles here if needed */
+.logo {
+    max-width: 9rem;
+}
 </style>
