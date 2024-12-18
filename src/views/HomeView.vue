@@ -19,7 +19,21 @@
       </div>
     </div>
 
-    <div class="container text-start pb-5 mt-3">
+    <div class="container text-start pb-5 pt-5">
+      <div class="row">
+        <div class="col-lg-8">
+          <Featured :data="featured" />
+          <List :data="articles" heading="Recommended Stories" />
+        </div>
+        <div class="col-lg">
+          <SideList v-if="newArticles.length > 0" :data="newArticles" heading="Trending Stories" />
+          <SideList :data="adverts" heading="Sponsored" />
+          <Adverts />
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="container text-start pb-5 mt-3">
       <div class="row">
         <div class="col">
           <List v-if="newArticles.length > 0" :data="newArticles" heading="New and Trending" />
@@ -27,23 +41,31 @@
         </div>
         <div class="d-none d-lg-block col-lg-3"></div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import List from "@/components/List.vue"; // Adjust the import path as needed
 import articleData from "@/assets/article_data.json"; // Adjust the import path as needed
+import Featured from "@/components/Featured.vue";
+import SideList from "@/components/SideList.vue";
+import Adverts from "@/components/Adverts.vue";
 
 export default {
   name: "HomePage",
   components: {
     List,
+    Featured,
+    SideList,
+    Adverts
   },
   data() {
     return {
       newArticles: articleData.new_articles,
       articles: articleData.articles,
+      adverts: articleData.advert,
+      featured: articleData.featured
     };
   },
 };

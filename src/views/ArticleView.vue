@@ -4,7 +4,7 @@
             <div class="col">
                 <div class="mb-2"><router-link to="../" class="link-primary"><i class="bi bi-arrow-left"></i>
                         Back</router-link></div>
-                <img class="img-fluid mb-3" :src="getURL(story.img_url)" alt="Article Image" />
+                <img class="img-fluid mb-3 main-image" :src="getURL(story.img_url)" alt="Article Image" />
                 <div class="my-1">
                     <span class="border px-2 py-1 d-inline-block text-muted border-muted" style="font-size: 0.8rem">
                         {{ story.brand }}
@@ -47,7 +47,9 @@ export default {
     },
     computed: {
         articles() {
-            return articleData.articles.concat(articleData.new_articles); // combine all
+            let data = articleData.articles.concat(articleData.new_articles, articleData.featured, articleData.advert); // combine
+
+            return data;
         },
     },
     methods: {
@@ -60,13 +62,15 @@ export default {
         const route = useRoute();
         const articleId = route.params.articleId;
 
-        
+
 
         this.story = this.articles.find((v) => v.id === articleId);
     },
 };
 </script>
 
-<style scoped>
-/* Add any styles specific to this component */
+<style lang="scss" scoped>
+.main-image {
+    max-height: 800px;
+}
 </style>
