@@ -2,7 +2,7 @@
     <div class="container text-start" v-if="story">
         <div class="row justify-content-start mb-5">
             <div class="col">
-                <div class="mb-2"><router-link to="../" class="link-primary"><i class="bi bi-arrow-left"></i>
+                <div class="mb-2"><router-link to="/" class="link-primary"><i class="bi bi-arrow-left"></i>
                         Back</router-link></div>
                 <img class="img-fluid mb-3 main-image" :src="getURL(story.img_url)" alt="Article Image" />
                 <div class="my-1">
