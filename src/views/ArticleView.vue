@@ -4,7 +4,7 @@
             <div class="col">
                 <div class="mb-2"><router-link to="/" class="link-primary"><i class="bi bi-arrow-left"></i>
                         Back</router-link></div>
-                <img class="img-fluid mb-3 main-image" :src="getURL(story.img_url)" alt="Article Image" />
+                <img v-if="story.img_url" class="img-fluid mb-3 main-image" :src="getURL(story.img_url)" alt="Article Image" />
                 <div class="my-1">
                     <span class="border px-2 py-1 d-inline-block text-muted border-muted" style="font-size: 0.8rem">
                         {{ story.brand }}

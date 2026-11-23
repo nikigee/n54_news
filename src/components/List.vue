@@ -4,7 +4,7 @@
         <h2 class="my-4 fw-bold h4">{{ heading }}</h2>
         <div v-for="item in reversedData" :key="item.id" class="py-2">
             <div class="row justify-content-md-start align-items-top mb-4">
-                <div class="col-md-5 mb-3 mb-md-0">
+                <div class="col-md-5 mb-3 mb-md-0" v-if="item.img_url">
                     <img class="img-fluid" :src="getURL(item.img_url)" alt="Article Image" />
                 </div>
                 <div class="col text-start">

@@ -23,11 +23,11 @@
       <div class="row">
         <div class="col-lg-8">
           <Featured :data="featured" />
-          <List :data="articles" heading="Recommended Stories" />
+          <List v-if="articles.length > 0" :data="articles" heading="Recommended Stories" />
         </div>
         <div class="col-lg">
           <SideList v-if="newArticles.length > 0" :data="newArticles" heading="Trending Stories" />
-          <SideList :data="adverts" heading="Sponsored" />
+          <SideList v-if="adverts.length > 0" :data="adverts" heading="Sponsored" />
           <Adverts />
         </div>
       </div>
