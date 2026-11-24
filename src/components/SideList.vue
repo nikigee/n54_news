@@ -4,7 +4,9 @@
         <div v-for="item in reversedData" :key="item.id" class="py-2">
             <div class="row justify-content-md-start align-items-top mb-4">
                 <div class="mb-3" v-if="item.img_url">
-                    <img class="img-fluid" :src="getURL(item.img_url)" alt="Article Image" />
+                    <router-link class="d-block" :to="'/article/' + item.id">
+                        <img class="img-fluid" :src="getURL(item.img_url)" alt="Article Image" />
+                    </router-link>
                 </div>
                 <div class="text-start">
                     <div class="row">
