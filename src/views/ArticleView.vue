@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useArticles } from '@/composables/useArticles'
 
@@ -12,9 +12,43 @@ const articleMarkup = computed(() => {
   const html = story.value?.content || '<p>The contents of this article have been redacted.</p>'
   return html.replace(/<img(?![^>]*\bloading=)/gi, '<img loading="lazy" decoding="async"')
 })
+
+const readProgress = ref(0)
+
+function updateReadProgress() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight
+  if (scrollableHeight <= 0) {
+    readProgress.value = 0
+    return
+  }
+  readProgress.value = Math.min(100, Math.max(0, (scrollTop / scrollableHeight) * 100))
+}
+
+watch(
+  () => route.params.articleId,
+  () => {
+    readProgress.value = 0
+  },
+)
+
+onMounted(() => {
+  updateReadProgress()
+  window.addEventListener('scroll', updateReadProgress, { passive: true })
+  window.addEventListener('resize', updateReadProgress, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateReadProgress)
+  window.removeEventListener('resize', updateReadProgress)
+})
 </script>
 
 <template>
+  <div v-if="story" class="reading-progress" aria-hidden="true">
+    <div class="reading-progress-bar" :style="{ width: `${readProgress}%` }"></div>
+  </div>
+
   <div class="container text-start" v-if="story">
     <div class="row justify-content-start mb-5">
       <div class="col">
@@ -55,7 +89,31 @@ const articleMarkup = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(20, 34, 24, 0.7);
+  z-index: 1050;
+  pointer-events: none;
+}
+
+.reading-progress-bar {
+  height: 100%;
+  background-color: #00c853;
+  box-shadow: 0 0 10px rgba(0, 200, 83, 0.75);
+  transition: width 0.08s linear;
+}
+
 .main-image {
   max-height: 800px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reading-progress-bar {
+    transition: none;
+  }
 }
 </style>

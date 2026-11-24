@@ -41,6 +41,18 @@ $code-color: #2ee66b;
     max-height: 500px;
 }
 
+.section-heading {
+    border-left: 3px solid $accent;
+    padding-left: 0.75rem;
+}
+
+.article-card-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+}
+
 .link-primary {
     text-decoration: none;
 }
