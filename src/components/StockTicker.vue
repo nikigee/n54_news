@@ -24,25 +24,25 @@ const tickers = ref([
   {
     symbol: 'FUJI',
     name: 'Fujisan',
-    price: 146.3,
+    price: 246.3,
     changePct: -12.85,
   },
   {
     symbol: 'MLTC',
     name: 'Militech',
     price: 278.9,
-    changePct: -7.14,
+    changePct: 2.14,
   },
   {
     symbol: 'ZHNG',
     name: 'ZhengIO',
-    price: 94.55,
+    price: 394.55,
     changePct: -16.4,
   },
   {
     symbol: 'FLGN',
     name: 'ForeignLegion',
-    price: 118.2,
+    price: 418.2,
     changePct: -9.32,
   },
   {
@@ -61,7 +61,7 @@ const tickers = ref([
     symbol: 'MRDN',
     name: 'Meridian Cap',
     price: 31.85,
-    changePct: -19.31,
+    changePct: -39.31,
   },
   {
     symbol: 'BARM',
