@@ -1,3 +1,7 @@
+<script setup>
+import logo from '@/assets/n54logo.png'
+</script>
+
 <template>
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-4">
@@ -36,21 +40,8 @@
   </div>
 </template>
 
-<script>
-import logo from "@/assets/n54logo.png"; // Adjust the path if needed
-
-export default {
-  name: "Header",
-  data() {
-    return {
-      logo,
-    };
-  },
-};
-</script>
-
 <style scoped>
-.nav-logo{
+.nav-logo {
   letter-spacing: 1px;
 }
 </style>

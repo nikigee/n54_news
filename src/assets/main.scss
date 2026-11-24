@@ -1,6 +1,4 @@
-// fonts
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Play:wght@400;700&display=swap');
-
+// fonts (loaded via <link> in index.html for faster parsing)
 $play: 'Play', sans-serif;
 $open-sans: 'Open Sans', sans-serif;
 $lato: 'Lato', sans-serif;
@@ -17,33 +15,21 @@ $primary: $accent;
 $nav-link-color: $accent;
 $code-color: #2ee66b;
 
-.lato-thin {
-    font-family: "Lato", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-}
-
 .lato-light {
-    font-family: "Lato", sans-serif;
+    font-family: $lato;
     font-weight: 300;
     font-style: normal;
 }
 
 .lato-regular {
-    font-family: "Lato", sans-serif;
+    font-family: $lato;
     font-weight: 400;
     font-style: normal;
 }
 
 .lato-bold {
-    font-family: "Lato", sans-serif;
+    font-family: $lato;
     font-weight: 700;
-    font-style: normal;
-}
-
-.lato-black {
-    font-family: "Lato", sans-serif;
-    font-weight: 900;
     font-style: normal;
 }
 
@@ -61,6 +47,7 @@ $code-color: #2ee66b;
 
 .hero-banner {
     position: relative;
+    isolation: isolate;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -68,6 +55,7 @@ $code-color: #2ee66b;
     text-align: left;
     color: white;
     padding: 15vh 0 15vh 0;
+    background: #020603 url('/cyberpunk_city_poster.webp') center / cover no-repeat;
 }
 
 .hero-video {
@@ -77,8 +65,13 @@ $code-color: #2ee66b;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -2;
-    /* Behind everything */
+    z-index: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-video {
+        display: none;
+    }
 }
 
 .overlay {
@@ -89,14 +82,12 @@ $code-color: #2ee66b;
     height: 100%;
     background: rgba(2, 6, 3, 0.5);
     /* Dark tint with transparency */
-    z-index: -1;
-    /* Behind content, above the video */
+    z-index: 1;
 }
 
 .hero-banner .container {
     position: relative;
-    z-index: 1;
-    /* Content above the video */
+    z-index: 2;
 }
 
 // this goes last

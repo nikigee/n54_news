@@ -1,7 +1,35 @@
+<script setup>
+import { onMounted, ref } from 'vue'
+import List from '@/components/List.vue'
+import Featured from '@/components/Featured.vue'
+import SideList from '@/components/SideList.vue'
+import Adverts from '@/components/Adverts.vue'
+import { useArticles } from '@/composables/useArticles'
+
+const { newArticles, articles, adverts, featured } = useArticles()
+const heroVideo = ref(null)
+
+onMounted(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches && heroVideo.value) {
+    heroVideo.value.pause()
+  }
+})
+</script>
+
 <template>
   <div class="app-wrap">
     <div class="text-start hero-banner">
-      <video class="hero-video" autoplay loop muted playsinline src="/cyberpunk_city.mp4"></video>
+      <video
+        ref="heroVideo"
+        class="hero-video"
+        autoplay
+        loop
+        muted
+        playsinline
+        poster="/cyberpunk_city_poster.webp"
+        src="/cyberpunk_city.mp4"
+        aria-hidden="true"
+      ></video>
       <div class="overlay"></div>
       <div class="container py-5">
         <h1 class="col-lg-8 mb-3 text-uppercase">
@@ -32,41 +60,5 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="container text-start pb-5 mt-3">
-      <div class="row">
-        <div class="col">
-          <List v-if="newArticles.length > 0" :data="newArticles" heading="New and Trending" />
-          <List :data="articles" heading="Recommended Stories" />
-        </div>
-        <div class="d-none d-lg-block col-lg-3"></div>
-      </div>
-    </div> -->
   </div>
 </template>
-
-<script>
-import List from "@/components/List.vue"; // Adjust the import path as needed
-import articleData from "@/assets/article_data.json"; // Adjust the import path as needed
-import Featured from "@/components/Featured.vue";
-import SideList from "@/components/SideList.vue";
-import Adverts from "@/components/Adverts.vue";
-
-export default {
-  name: "HomePage",
-  components: {
-    List,
-    Featured,
-    SideList,
-    Adverts
-  },
-  data() {
-    return {
-      newArticles: articleData.new_articles,
-      articles: articleData.articles,
-      adverts: articleData.advert,
-      featured: articleData.featured
-    };
-  },
-};
-</script>
