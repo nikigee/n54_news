@@ -4,6 +4,7 @@ import List from '@/components/List.vue'
 import Featured from '@/components/Featured.vue'
 import SideList from '@/components/SideList.vue'
 import Adverts from '@/components/Adverts.vue'
+import StockTicker from '@/components/StockTicker.vue'
 import { useArticles } from '@/composables/useArticles'
 
 const { newArticles, articles, adverts, featured } = useArticles()
@@ -46,6 +47,8 @@ onMounted(() => {
         </p>
       </div>
     </div>
+
+    <StockTicker />
 
     <div class="container text-start pb-5 pt-5">
       <div class="row">
